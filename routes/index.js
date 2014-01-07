@@ -29,7 +29,7 @@ function Routes (app) {
 
   app.get('/', function(req, res, next) {
     if(req.isAuthenticated()){
-      client.hmset(
+     client.hmset(
           'users:' + req.user.provider + ":" + req.user.username
         , req.user
       );
@@ -42,33 +42,13 @@ function Routes (app) {
   /*
    * Authentication routes
    */
-
-  if(config.auth.twitter.consumerkey.length) {
-    app.get('/auth/twitter', passport.authenticate('twitter'));
-
-    app.get('/auth/twitter/callback', 
-      passport.authenticate('twitter', {
-        successRedirect: '/',
-        failureRedirect: '/'
-      })
-    );
-  }
-
-  if(config.auth.facebook.clientid.length) {
-    app.get('/auth/facebook', passport.authenticate('facebook'));
-
-    app.get('/auth/facebook/callback', 
-      passport.authenticate('facebook', {
-        successRedirect: '/',
-        failureRedirect: '/'
-      })
-    );
-  }
+  authRoutes(app, config);
 
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
   });
+
 
   /*
    * Rooms list
@@ -107,5 +87,68 @@ function Routes (app) {
       });
     });
   });
+
+}
+
+/*
+ * 绑定第三方登录
+ *
+ * */
+function authRoutes(app, config){
+
+  if(config.auth.twitter.consumerkey.length) {
+    app.get('/auth/twitter', passport.authenticate('twitter'));
+
+    app.get('/auth/twitter/callback', 
+      passport.authenticate('twitter', {
+        successRedirect: '/',
+        failureRedirect: '/'
+      })
+    );
+  }
+
+  if(config.auth.facebook.clientid.length) {
+    app.get('/auth/facebook', passport.authenticate('facebook'));
+
+    app.get('/auth/facebook/callback', 
+      passport.authenticate('facebook', {
+        successRedirect: '/',
+        failureRedirect: '/'
+      })
+    );
+  }
+
+  if(config.auth.qq.clientid.length) {
+    app.get('/auth/qq', passport.authenticate('qq'));
+
+    app.get('/auth/qq/callback', 
+      passport.authenticate('qq', {
+        successRedirect: '/',
+        failureRedirect: '/'
+      })
+    );
+  }
+
+  if(config.auth.weibo.clientid.length) {
+    app.get('/auth/weibo', passport.authenticate('weibo'));
+
+    app.get('/auth/weibo/callback', 
+      passport.authenticate('weibo', {
+        successRedirect: '/',
+        failureRedirect: '/'
+      })
+    );
+  }
+
+  if(config.auth.renren.clientid.length) {
+    app.get('/auth/renren', passport.authenticate('renren'));
+
+    app.get('/auth/renren/callback', 
+      passport.authenticate('renren', {
+        successRedirect: '/',
+        failureRedirect: '/'
+      })
+    );
+  }
 
 }

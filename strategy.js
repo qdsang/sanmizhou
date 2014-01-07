@@ -6,7 +6,10 @@
 var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
   , FacebookStrategy = require('passport-facebook').Strategy 
-
+  , QQStrategy = require('passport-qq').Strategy
+  , WeiboStrategy = require('passport-weibo').Strategy
+  , RenrenStrategy = require('passport-renren').Strategy
+;
 /**
  * Expose Authentication Strategy
  */
@@ -52,6 +55,45 @@ function Strategy (app) {
       },
       function(accessToken, refreshToken, profile, done) {
         return done(null, profile);
+      }
+    ));
+  }
+
+  if(config.auth.qq.clientid.length) {
+    passport.use(new QQStrategy({
+        clientID: config.auth.qq.clientid,
+        clientSecret: config.auth.qq.clientsecret,
+        callbackURL: config.auth.qq.callback
+      },
+      function(accessToken, refreshToken, profile, done) {
+	profile.username = profile.username || profile.nickname || profile.name;
+        return done(null, profile);
+      }
+    ));
+  }
+
+  if(config.auth.weibo.clientid.length) {
+    passport.use(new WeiboStrategy({
+        clientID: config.auth.weibo.clientid,
+        clientSecret: config.auth.weibo.clientsecret,
+        callbackURL: config.auth.weibo.callback
+      },
+      function(accessToken, refreshToken, profile, done) {
+	profile.username = profile.username || profile.nickname || profile.name;
+        return done(null, profile);
+      }
+    ));
+  }
+
+  if(config.auth.renren.clientid.length) {
+    passport.use(new RenrenStrategy({
+        clientID: config.auth.renren.clientid,
+        clientSecret: config.auth.renren.clientsecret,
+        callbackURL: config.auth.renren.callback
+      },
+      function(accessToken, refreshToken, profile, done) {
+	profile.username = profile.username || profile.nickname || profile.name;
+	return done(null, profile);
       }
     ));
   }

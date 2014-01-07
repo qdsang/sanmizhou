@@ -1,7 +1,7 @@
 {
-  "name": "Balloons.io",
+  "name": "sanbaozhou",
   "description": "Web multi-room chat server and client ready to use.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "express": "3.3.4",
     "connect": "~2.8.4",
@@ -14,7 +14,11 @@
     "passport": "~0.1.17",
     "passport-facebook": "~0.1.5",
     "passport-twitter": "~0.1.5",
-    "component-type": "component/type"
+    "passport-qq": "~0.0.2",
+    "passport-weibo": "~0.1.0",
+    "passport-renren": "~0.1.1",
+    "component-type": "component/type",
+    "zeparser": "~0.0.7"
   },
   "engines": {
     "node": ">= 0.8.0",

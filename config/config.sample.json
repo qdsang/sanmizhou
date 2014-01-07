@@ -10,6 +10,21 @@
       "clientid" : "yourClientID",
       "clientsecret" : "yourClientSecret",
       "callback" : "http://127.0.0.1:6789/auth/facebook/callback"
+    },
+    "qq": {
+      "clientid" : "yourClientID",
+      "clientsecret" : "yourClientSecret",
+      "callback" : "http://127.0.0.1:6789/auth/qq/callback"
+    },
+    "weibo": {
+      "clientid" : "yourClientID",
+      "clientsecret" : "yourClientSecret",
+      "callback" : "http://127.0.0.1:6789/auth/weibo/callback"
+    },
+    "renren": {
+      "clientid" : "yourClientID",
+      "clientsecret" : "yourClientSecret",
+      "callback" : "http://127.0.0.1:6789/auth/renren/callback"
     }
   },
   "session" : {
@@ -17,6 +32,9 @@
   },
   "app": {
     "port": 6789
+  },
+  "history": {
+    "viewlimit": 5
   },
   "theme": {
     "name" : "default"

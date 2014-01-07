@@ -20,7 +20,21 @@ module.exports = {
       consumerkey: env.TW_CONSUMER_KEY,
       consumersecret: env.TW_CONSUMER_SECRET,
       callback: env.TW_CALLBACK
-    }
+    },
+    qq: {
+      clientid: env.QQ_CLIENT_ID,
+      clientsecret: env.QQ_CLIENT_SECRET,
+    },
+    weibo: {
+      clientid: env.WB_CLIENT_ID,
+      clientsecret: env.WB_CLIENT_SECRET,
+      callback: env.WB_CALLBACK
+    },
+    renren: {
+      clientid: env.RR_CLIENT_ID,
+      clientsecret: env.RR_CLIENT_SECRET,
+      callback: env.RR_CALLBACK
+    } 
   },
   session: {
     secret: env.SESSION_SECRET || "b.io:secret"
